@@ -1,6 +1,6 @@
-a = float(input("Выберите количество золота - "))
-b = a * 10
-c = a * 100
-print("Выбрано золота - ", a)
-print('В серебре - ', b)
-print('В меди - ', c)
+gold = float(input("Выберите количество золота - "))
+silver = gold * 10
+cooper = gold * 100
+print("Выбрано золота - ", gold)
+print('В серебре - ', silver)
+print('В меди - ', cooper)
