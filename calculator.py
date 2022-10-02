@@ -1,12 +1,15 @@
 act = input("Выберите +, -, *, /")
-a = float(input("Введите первое число"))
-b = float(input("Введите второе число"))
-if act == "+" :
-    c = a + b
-elif act == "-" :
-    c = a - b
-elif act == "/" :
-    c = a / b
-elif act == "*" :
-    c = a * b
-print("Результат:", c)
+first_number = float(input("Введите первое число"))
+second_number = float(input("Введите второе число"))
+match act:
+    case "+":
+        print(first_number + second_number)
+
+    case "-":
+        print(first_number - second_number)
+
+    case "*":
+        print(first_number * second_number)
+
+    case "/":
+        print(first_number / second_number)
