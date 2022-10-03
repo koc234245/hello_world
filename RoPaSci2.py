@@ -12,16 +12,15 @@ def game():
   if user == computer:
     print("Ничья!")
   # ничья
-  elif user == computer + 1:
+  elif user == 0 and computer == 2 or user == 1 and computer == 0 or user == 2 and computer == 1:
     print("Вы проиграли!")
   # компьютер выйграл
-  elif user + 1 == computer:
+  elif user == 0 and computer == 1 or user == 1 and computer == 2 or user == 2 and computer == 0:
     print("Вы выйграли!")
   # пользователь выйграл
   else:
     print("Упс, вы что-то не то ввели")
   # что-то не то ввели
-  print("Результат")
 game()
 
 # match user:
