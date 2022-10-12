@@ -19,7 +19,7 @@ def merge_sort(sort):
     sort_right = sort[mid:]
     merge_sort(sort_left)
     merge_sort(sort_right)
-    
+
     i = 0
     j = 0
     n = 0
@@ -40,6 +40,7 @@ def merge_sort(sort):
         sort[n] = sort_right[j]
         j = j + 1
         n = n + 1
-
+b = a.copy()
 merge_sort(a)
 print(a)
+print(b)
