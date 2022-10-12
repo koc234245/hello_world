@@ -1,34 +1,45 @@
-def merge_sort(sequence):
-    """
-    Sequence of numbers is taken as input, and is split into two halves, following which they are recursively sorted.
-    """
-    if len(sequence) < 2:
-        return sequence
+#Сортируемый массив разбивается на две части примерно одинакового размера;
+#Каждая из получившихся частей сортируется отдельно, например — тем же самым алгоритмом;
+#Два упорядоченных массива половинного размера соединяются в один.
+#1.1. — 2.1. Рекурсивное разбиение задачи на меньшие происходит до тех пор, пока размер массива не достигнет единицы (любой массив длины 1 можно считать упорядоченным).
 
-    mid = len(sequence) // 2     # note: 7//2 = 3, whereas 7/2 = 3.5
+#3.1. Соединение двух упорядоченных массивов в один.
+#Основную идею слияния двух отсортированных массивов можно объяснить на следующем примере. Пусть мы имеем два уже отсортированных по возрастанию подмассива. Тогда:
+#3.2. Слияние двух подмассивов в третий результирующий массив.
+#На каждом шаге мы берём меньший из двух первых элементов подмассивов и записываем его в результирующий массив. Счётчики номеров элементов результирующего массива и подмассива, из которого был взят элемент, увеличиваем на 1.
+#3.3. «Прицепление» остатка.
+#Когда один из подмассивов закончился, мы добавляем все оставшиеся элементы второго подмассива в результирующий массив.
+a = [5, 2, 6, 8, 5, 8, 1]
 
-    left_sequence = merge_sort(sequence[:mid])
-    right_sequence = merge_sort(sequence[mid:])
+def merge_sort(sort):
+    if len(sort) < 2:
+        return sort
+    mid = len(sort) // 2
+    sort_left = sort[:mid]
+    sort_right = sort[mid:]
+    merge_sort(sort_left)
+    merge_sort(sort_right)
+    
+    i = 0
+    j = 0
+    n = 0
 
-    return merge(left_sequence, right_sequence)
-
-def merge(left, right):
-    """
-    Traverse both sorted sub-arrays (left and right), and populate the result array
-    """
-    result = []
-    i = j = 0
-    while i < len(left) and j < len(right):
-        if left[i] < right[j]:
-            result.append(left[i])
-            i += 1
+    while i < len(sort_left) and j < len(sort_right):
+        if sort_left[i] < sort_right[j]:
+            sort[n] = sort_left[i]
+            i = i + 1
         else:
-            result.append(right[j])
-            j += 1
-    result += left[i:]
-    result += right[j:]
+            sort[n] = sort_right[j]
+            j = j + 1
+        n = n + 1
+    while i < len(sort_left):
+        sort[n] = sort_left[i]
+        i = i + 1
+        n = n + 1
+    while j < len(sort_right):
+        sort[n] = sort_right[j]
+        j = j + 1
+        n = n + 1
 
-    return result
-
-# Print the sorted list.
-print(merge_sort([5, 2, 6, 8, 5, 8, 1]))
+merge_sort(a)
+print(a)
