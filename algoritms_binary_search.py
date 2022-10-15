@@ -1,3 +1,4 @@
+# бинарный поиск
 from multiprocessing.resource_sharer import stop
 
 
@@ -23,5 +24,5 @@ if low > high:
     
 else:
     print(mid)
-stop
-    
+
+stop  
